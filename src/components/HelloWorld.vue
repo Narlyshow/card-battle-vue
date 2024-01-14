@@ -4,12 +4,12 @@
       <h2>Login</h2>
       <form @submit.prevent="login">
         <div class="form-group">
-          <label for="username">Nome de Usuário:</label>
-          <input type="text" id="username" v-model="username" required>
+          <label for="email">Nome de Usuário:</label>
+          <input type="text" id="email" v-model="email" required>
         </div>
         <div class="form-group">
-          <label for="password">Senha:</label>
-          <input type="password" id="password" v-model="password" required>
+          <label for="senha">Senha:</label>
+          <input type="senha" id="senha" v-model="senha" required>
         </div>
         <button type="submit">Entrar</button>
       </form>
@@ -25,17 +25,17 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      username: '',
-      password: '',
+      email: '',
+      senha: '',
       senhaInvalida: false
     };
   },
   methods: {
     async login() {
       try {
-        const response = await axios.post('sua_url_da_api/login', {
-          username: this.username,
-          password: this.password
+        const response = await axios.post('https://localhost:7021/api/v1/players/Login', {
+          email: this.email,
+          senha: this.senha
         });
 
         // Verifique a resposta da API e tome as ações apropriadas
