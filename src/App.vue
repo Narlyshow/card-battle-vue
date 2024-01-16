@@ -1,17 +1,15 @@
 <template>
-  
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-link to="/"></router-link>
+  <router-view></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import TelaLogin from './components/TelaLogin.vue'
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: 'App'
+};
 </script>
 
 <style>

@@ -40,8 +40,9 @@ export default {
 
         // Verifique a resposta da API e tome as ações apropriadas
         console.log('Resposta da API:', response.data);
-
+        
         // Redirecione para a próxima página ou realize a ação apropriada após o login bem-sucedido
+        this.$router.push({ name: 'TelaPrincipal' });
 
       } catch (error) {
         // Exiba uma mensagem de erro se as credenciais forem inválidas.
