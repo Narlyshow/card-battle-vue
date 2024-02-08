@@ -24,7 +24,8 @@ const routes = [
     { 
       path: '/tela-principal',
       name: 'TelaPrincipal',
-      component: lazyLoad("TelaPrincipal")
+      component: lazyLoad("TelaPrincipal"),
+      //props: (route) => ({ emailAutenticado: route.query.emailAutenticado })
     },
     {
         path: '/:pathMatch(.*)*',

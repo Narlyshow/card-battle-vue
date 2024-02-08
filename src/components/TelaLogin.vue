@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
           <label for="senha">Senha:</label>
-          <input type="senha" id="senha" v-model="senha" required>
+          <input type="password" id="senha" v-model="senha" required>
         </div>
         <button type="submit">Entrar</button>
       </form>
@@ -27,6 +27,7 @@ export default {
     return {
       email: '',
       senha: '',
+      emailAutenticado: '',
       senhaInvalida: false
     };
   },
@@ -41,8 +42,11 @@ export default {
         // Verifique a resposta da API e tome as ações apropriadas
         console.log('Resposta da API:', response.data);
         
+        localStorage.setItem('emailAutenticado', this.email);
+
         // Redirecione para a próxima página ou realize a ação apropriada após o login bem-sucedido
-        this.$router.push({ name: 'TelaPrincipal' });
+        this.$router.push({ name: 'TelaPrincipal', query: { emailAutenticado  : this.email}});
+        console.log(this.emailAutenticado);
 
       } catch (error) {
         // Exiba uma mensagem de erro se as credenciais forem inválidas.

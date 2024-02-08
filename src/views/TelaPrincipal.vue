@@ -32,7 +32,7 @@
     data() {
       return {
         jogador: {
-          nome: 'Player1',
+          nome: '',
           nivel: 5,
           experiencia: 120,
           cartas: [
@@ -43,8 +43,32 @@
         }
       };
     },
+    mounted() {
+    const emailAutenticado = localStorage.getItem('emailAutenticado');  
+    this.carregarInformacoesJogador(emailAutenticado);
+    },
     methods: {
+      async carregarInformacoesJogador(emailAutenticado) {
+      try {
+        
+        const url = `https://localhost:7021/api/v1/players/PlayerInformation?email=${emailAutenticado}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Atualizar os dados do jogador com os dados recebidos da API
+        this.jogador.nome = data.nome_de_usuario;
+        this.jogador.nivel = data.nivel;
+        this.jogador.experiencia = data.experiencia;
+        this.jogador.cartas = data.cartas; // Supondo que a API retorne um array de cartas
+
+      } catch (error) {
+        console.error('Erro ao carregar informações do jogador:', error);
+      }
+    },
       logout() {
+        
+        localStorage.removeItem('emailAutenticado');
+        
         // Implemente a lógica de logout, por exemplo, redirecionar para a tela de login
         this.$router.push('/');
       }
