@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import TelaLogin from '../components/TelaLogin.vue';
+import PopupSuccess from '../components/PopupSuccess.vue'
 //import TelaPrincipal from '../views/TelaPrincipal.vue';
 //import NotFound from '../views/NotFound.vue';
 
@@ -31,7 +32,17 @@ const routes = [
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
         component: lazyLoad("NotFound")
-    }
+    },
+    {
+        path: '/formulario-cadastro',
+        name: 'FormularioCadastro',
+        component: lazyLoad("FormularioCadastro")
+    },
+    {
+      path: '/pop-up',
+      name: 'PopupSuccess',
+      component: PopupSuccess
+    }  
   ];
   
   const router = createRouter({
